@@ -1,6 +1,8 @@
 import { readFileSync } from "fs";
 import { resolve, dirname } from "path";
 
+// Get the expenses from the input file, transform to
+// an array and convert entries from strings to number
 const expenses = readFileSync(
   // @ts-ignore
   resolve(dirname(require.main.filename), "input.txt"),
@@ -10,14 +12,20 @@ const expenses = readFileSync(
   .split("\n")
   .map((expense) => +expense);
 
-let result = 0;
+export const fixExpenseReport = (expenses: number[]) => {
+  // Create placeholder for result to be returned
+  let result = 0;
 
-expenses.some((expense) => {
-  const index = expenses.indexOf(2020 - expense);
-  if (index > -1) {
-    // Found it
-    result = expense * expenses[index];
-  }
-});
+  // Find the mathich expenses with some and indexOf
+  expenses.some((expense) => {
+    const index = expenses.indexOf(2020 - expense);
+    if (index > -1) {
+      // Found it! Update result!
+      result = expense * expenses[index];
+    }
+  });
 
-console.log(result);
+  return result;
+};
+
+console.log(fixExpenseReport(expenses));
