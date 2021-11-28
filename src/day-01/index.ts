@@ -12,7 +12,7 @@ const expenses = readFileSync(
   .split("\n")
   .map((expense) => +expense);
 
-export const fixExpenseReport = (expenses: number[]) => {
+export const findTwo = (expenses: number[]) => {
   // Create placeholder for result to be returned
   let result = 0;
 
@@ -28,4 +28,4 @@ export const fixExpenseReport = (expenses: number[]) => {
   return result;
 };
 
-console.log(fixExpenseReport(expenses));
+console.log(findTwo(expenses));
