@@ -28,4 +28,17 @@ export const findTwo = (expenses: number[]) => {
   return result;
 };
 
-console.log(findTwo(expenses));
+// Not the most efficient solution but still.
+export const findThree = (expenses: number[]) => {
+  let result = 0;
+  for (let first of expenses) {
+    for (let second of expenses) {
+      for (let third of expenses) {
+        if (first + second + third === 2020) {
+          result = first * second * third;
+        }
+      }
+    }
+  }
+  return result;
+};
