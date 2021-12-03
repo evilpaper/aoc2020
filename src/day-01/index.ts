@@ -10,25 +10,19 @@ const expenses = readFileSync(
 )
   .trim()
   .split("\n")
-  .map((expense) => +expense);
+  .map((expense) => Number(expense));
 
 export const findTwo = (expenses: number[]) => {
-  // Create placeholder for result to be returned
   let result = 0;
-
-  // Find the mathich expenses with some and indexOf
   expenses.some((expense) => {
     const index = expenses.indexOf(2020 - expense);
     if (index > -1) {
-      // Found it! Update result!
       result = expense * expenses[index];
     }
   });
-
   return result;
 };
 
-// Not the most efficient solution but still.
 export const findThree = (expenses: number[]) => {
   let result = 0;
   for (let first of expenses) {
